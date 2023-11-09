@@ -1,5 +1,5 @@
-# As of 2018-06-29 https://github.com/aria2/aria2/blob/master/Dockerfile.raspberrypi, aria2 is build upon ubuntu trusty (which is debian 8). So pick a debian 8 as well
-FROM arm32v7/debian:8.11 AS aria2-builder
+# As of 2023-11-09 https://github.com/aria2/aria2/blob/master/Dockerfile.android, aria2 is build upon ubuntu 22.04. So pick ubuntu:22.04 as well.
+FROM arm32v7/ubuntu:22.04 AS aria2-builder
 
 # aria2 build
 RUN mkdir -p /builds && mkdir -p /builds/aria2c \
@@ -42,7 +42,7 @@ RUN mkdir -p /builds && mkdir -p /builds/gosu \
 
 
 FROM arm32v7/httpd:2.4.33
-# BE CAREFULL the arm32v7/httpd image MUST match the version of debian used to build aria2. otherwise shared library versions might not be the same.
+# BE CAREFULL the arm32v7/httpd image MUST match the version of ubuntu used to build aria2. otherwise shared library versions might not be the same.
 # A better approach will be to build static version of aria2.
 
 # download aria2 dependendies
